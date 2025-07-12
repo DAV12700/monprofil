@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>My Website</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* Reset and base styles */
+    :root {
+      --primary-color: #0563bb;
+      --secondary-color: #45505b;
+      --light-color: #f2f3f5;
+      --dark-color: #272829;
+      --white: #fff;
+      --gray: #6c757d;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #fd7e14;
+      --info-color: #17a2b8;
+      --font-primary: 'Poppins', sans-serif;
+      --font-secondary: 'Raleway', sans-serif;
+      --font-default: 'Roboto', sans-serif;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-default);
+      color: var(--secondary-color);
+      line-height: 1.6;
+      background-color: var(--white);
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: #0678e3;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-primary);
+      color: var(--dark-color);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+
+    .container-fluid {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .col-md-6, .col-lg-8, .col-12 {
+      position: relative;
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    @media (min-width: 768px) {
+      .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .col-lg-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+      }
+    }
+
+    /* Header styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background-color: var(--white);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      padding: 15px 0;
+    }
+
+    .header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .logo img {
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header .sitename {
+      font-size: 24px;
+      margin: 0;
+      padding: 0;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+
+    .navmenu {
+      display: flex;
+    }
+
+    .navmenu ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navmenu li {
+      position: relative;
+      padding: 0 15px;
+    }
+
+    .navmenu a {
+      color: var(--secondary-color);
+      font-weight: 500;
+      font-size: 16px;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .navmenu a:hover,
+    .navmenu a.active {
+      color: var(--primary-color);
+    }
+
+    .navmenu a.active:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1199px) {
+      .navmenu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        z-index: 9999;
+        padding: 60px 20px;
+        overflow-y: auto;
+      }
+
+      .navmenu ul {
+        flex-direction: column;
+      }
+
+      .navmenu li {
+        padding: 10px 0;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .navmenu-active {
+        right: 0;
+      }
+    }
+
+    /* Page Title */
+    .page-title {
+      padding: 120px 0 60px;
+      background-color: var(--light-color);
+    }
+
+    .page-title h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .page-title p {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+
+    .breadcrumbs {
+      padding: 15px 0;
+      background-color: rgba(69, 80, 91, 0.05);
+    }
+
+    .breadcrumbs ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .breadcrumbs ol li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumbs ol li + li:before {
+      content: '/';
+      display: inline-block;
+      padding: 0 10px;
+      color: var(--gray);
+    }
+
+    .breadcrumbs ol li a {
+      color: var(--primary-color);
+    }
+
+    .breadcrumbs ol li.current {
+      color: var(--gray);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 60px 0;
+    }
+
+    .info-item {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+      height: 100%;
+    }
+
+    .info-item i {
+      font-size: 24px;
+      color: var(--primary-color);
+      margin-right: 20px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .info-item h3 {
+      font-size: 20px;
+      color: var(--dark-color);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .info-item p {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(5, 99, 187, 0.1);
+      color: var(--primary-color);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+
+    /* Form styles */
+    .php-email-form {
+      padding: 30px;
+      background: var(--white);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+    }
+
+    .php-email-form .form-control {
+      height: 48px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      width: 100%;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .php-email-form .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(5, 99, 187, 0.25);
+      outline: 0;
+    }
+
+    .php-email-form textarea.form-control {
+      height: auto;
+      min-height: 150px;
+    }
+
+    .php-email-form .btn-submit {
+      background: var(--primary-color);
+      border: 0;
+      padding: 12px 30px;
+      color: var(--white);
+      transition: var(--transition);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .php-email-form .btn-submit:hover {
+      background: #0678e3;
+    }
+
+    .php-email-form .loading,
+    .php-email-form .error-message,
+    .php-email-form .sent-message {
+      display: none;
+      text-align: center;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .php-email-form .loading {
+      color: var(--secondary-color);
+    }
+
+    .php-email-form .error-message {
+      color: var(--danger-color);
+      background: rgba(220, 53, 69, 0.1);
+      border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+
+    .php-email-form .sent-message {
+      color: var(--success-color);
+      background: rgba(40, 167, 69, 0.1);
+      border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark-color);
+      color: var(--white);
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+
+    .footer .sitename {
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .footer p {
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .footer .social-links {
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .footer .social-links a {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+
+    .footer .social-links a:hover {
+      background: var(--primary-color);
+    }
+
+    .footer .copyright {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    .footer .credits {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Scroll top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: var(--primary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: #0678e3;
+      color: var(--white);
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #preloader:after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--primary-color);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Utility classes */
+    .d-flex {
+      display: flex !important;
+    }
+
+    .align-items-center {
+      align-items: center !important;
+    }
+
+    .justify-content-center {
+      justify-content: center !important;
+    }
+
+    .justify-content-between {
+      justify-content: space-between !important;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .flex-shrink-0 {
+      flex-shrink: 0 !important;
+    }
+
+    .w-100 {
+      width: 100% !important;
+    }
+
+    .px-1 {
+      padding-left: 0.25rem !important;
+      padding-right: 0.25rem !important;
+    }
+
+    .mb-0 {
+      margin-bottom: 0 !important;
+    }
+
+    .position-relative {
+      position: relative !important;
+    }
+
+    .fixed-top {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+    }
+
+    .dark-background {
+      background-color: var(--dark-color);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .page-title {
+        padding: 80px 0 40px;
+      }
+      
+      .page-title h1 {
+        font-size: 36px;
+      }
+      
+      .info-item {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/download.png" alt="Photo de David" style="width: 50px; height: 50px; margin-right: 10px;">
+        <h1 class="sitename">Ir NIYOKWIZIGIRA David</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Contact</h1>
+              <p class="mb-0">Nous serions ravis de vous entendre ! Que vous ayez des questions, des commentaires ou des idées à partager, n'hésitez pas à nous contacter. Remplissez simplement le formulaire ci-dessous ou utilisez les informations fournies pour nous joindre directement. Votre avis est précieux et nous aidera à améliorer nos services. Ensemble, faisons de votre projet une réalité !.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Contact</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+              <i class="icon fas fa-map-marker-alt flex-shrink-0"></i>
+              <div>
+                <h3>ADDRESSE</h3>
+                <p>Burundi, bujumbura a Kiriri , Rumonge 7eme Avenue,Buruhukiro </p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="icon fas fa-phone flex-shrink-0"></i>
+              <div>
+                <h3>APPELEZ-MOI</h3>
+                <p>+25761061454, whatsapp: +25771210474</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
+              <i class="icon fas fa-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email </h3>
+                <p>davidniyokwizigira09@gmail.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+              <i class="icon fas fa-share-alt flex-shrink-0"></i>
+              <div>
+                <h3>Profils sociaux</h3>
+                <div class="social-links">
+                  <a href="https://wa.me/+25771210474"><i class="fab fa-whatsapp"></i></a>
+                  <a href="https://www.facebook.com/tonprofil"><i class="fab fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/tonprofil"><i class="fab fa-instagram"></i></a>
+                  
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <form id="contact-form" class="php-email-form">
+          <div class="row gy-4">
+            <div class="col-12">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="col-12">
+              <input data-translate="email" type="email" class="form-control" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="col-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+            </div>
+            <div class="col-12 text-center">
+              <div class="loading" style="display: none;" data-translate="load">Loading</div>
+              <div class="error-message" style="display: none;"></div>
+              <div class="sent-message" style="display: none;">Votre message a été envoyé avec succes. Merci!</div>
+              <button type="submit" class="btn btn-submit w-100">Envoyer le message</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">Ir NIYOKWIZIGIRA David</h3>
+      <p>Découvrez mon parcours, mes passions et les moments qui ont façonné ma vie. À travers ce site, je partage avec vous mes expériences, mes réflexions et les leçons apprises en chemin.  Que vous ayez des questions, des commentaires ou des idées à partager, n'hésitez pas à nous contacter. Merci de votre visite, </p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://wa.me/+25771210474"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/tonprofil"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/tonprofil"><i class="fab fa-instagram"></i></a>
+        
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">DAV127</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you've purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="fas fa-arrow-up"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("UfUvWHlvXd4GYrXuL"); // Public key
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Show loading message
+      document.querySelector('.loading').style.display = 'block';
+      document.querySelector('.error-message').style.display = 'none';
+      document.querySelector('.sent-message').style.display = 'none';
+
+      // Check if the user is online
+      if (!navigator.onLine) {
+        document.querySelector('.loading').style.display = 'none';
+        document.querySelector('.error-message').innerText = 'No internet connection. Please check your network.';
+        document.querySelector('.error-message').style.display = 'block';
+        return; // Stop the submission
+      }
+
+      emailjs.sendForm("service_l0l4md6", "template_roqdhjl", this) // Pass the form directly
+        .then(function(response) {
+          console.log('Email sent successfully!', response);
+          document.querySelector('.loading').style.display = 'none';
+          document.querySelector('.sent-message').style.display = 'block';
+          document.getElementById('contact-form').reset();
+        }, function(error) {
+          document.querySelector('.loading').style.display = 'none';
+          console.error('Error sending email:', error);
+          let errorMessage = 'Failed to send email: ';
+          if (error.text) {
+            errorMessage += error.text;
+          } else if (error.message) {
+            errorMessage += error.message;
+          } else {
+            errorMessage += 'An unknown error occurred.';
+          }
+          document.querySelector('.error-message').innerText = errorMessage;
+          document.querySelector('.error-message').style.display = 'block';
+        });
+    });
+
+    // Mobile navigation toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navmenu = document.querySelector('#navmenu');
+      
+      if (mobileNavToggle && navmenu) {
+        mobileNavToggle.addEventListener('click', function() {
+          navmenu.classList.toggle('navmenu-active');
+        });
+      }
+
+      // Scroll top button
+      const scrollTop = document.getElementById('scroll-top');
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 100) {
+          scrollTop.classList.add('active');
+        } else {
+          scrollTop.classList.remove('active');
+        }
+      });
+
+      // Preloader
+      window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
